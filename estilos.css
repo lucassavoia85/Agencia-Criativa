@@ -1,20 +1,26 @@
+/* ===================================
+   1. VARIÁVEIS E ESTILOS DE BASE
+   =================================== */
+
 :root {
-    /* Cores */
     --primary-color: #007bff;
     --secondary-color: #0056b3;
     --background-light: #f4f7f6;
     --background-dark: #2c3e50;
-    --text-color-dark: #333;
-    --text-color-light: #fff; 
+    --text-dark: #333;
+    --text-light: #fff; 
     --accent-color: #2ecc71;
+    --accent-hover-color: #27ae60;
+    --border-color: #ccc;
+    --shadow-color: rgba(0,0,0,0.1);
 
-    /* Fontes */
     --font-primary: 'Arial', sans-serif;
     --font-heading: 'Helvetica Neue', sans-serif;
 
-
     --font-size-base: 1rem;
     --font-size-large: 1.25rem;
+    --font-size-xl: 1.8rem;
+    --font-size-xxl: 3rem;
 }
 
 * {
@@ -24,267 +30,154 @@
 }
 
 html {
-    font-size: 100%; 
+    font-size: 100%;
     scroll-behavior: smooth;
 }
 
 body {
     font-family: var(--font-primary);
     line-height: 1.6;
-    color: var(--text-color-dark);
+    color: var(--text-dark);
     background-color: var(--background-light);
-}
-
-.container {
-    /* Largura máxima do conteúdo central */
-    max-width: 1200px;
-    width: 90%; 
-    margin: 0 auto;
-}
-
-h1, h2, h3, h4 {
-    font-family: var(--font-heading);
-    margin-bottom: 0.8em;
-    color: var(--secondary-color);
-}
-
-a {
-    text-decoration: none;
-    color: var(--primary-color);
-    transition: color 0.3s;
-}
-
-a:hover {
-    color: var(--secondary-color);
 }
 
 img {
     max-width: 100%;
     height: auto;
-    display: block; 
+    display: block;
 }
 
-/* Estilo para Botões */
-.cta-button {
+/* ===================================
+   2. CLASSES UTILITÁRIAS E COMPONENTES
+   =================================== */
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Componente: Botão */
+.btn {
     display: inline-block;
-    background-color: var(--accent-color);
-    color: var(--text-color-light);
     padding: 0.8rem 1.5rem;
     border-radius: 5px;
     font-size: var(--font-size-large);
     font-weight: bold;
     margin-top: 1.5rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
     transition: background-color 0.3s, transform 0.2s;
 }
 
-.cta-button:hover {
-    background-color: #27ae60;
+.btn--accent {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+}
+
+.btn--accent:hover {
+    background-color: var(--accent-hover-color);
     transform: translateY(-2px);
 }
 
-/*
-====================================
-2. Cabeçalho e Navegação
-====================================
-*/
-.main-header {
+/* Componente: Card */
+.card {
+    background-color: var(--text-light);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+/* Componente: Formulário */
+.form__group {
+    margin-top: 1rem;
+}
+
+.form__label {
+    display: block;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 0.3rem;
+}
+
+.form__input,
+.form__textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: var(--font-size-base);
+    font-family: var(--font-primary);
+}
+
+.form__textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ===================================
+   3. LAYOUT PRINCIPAL (HEADER, FOOTER)
+   =================================== */
+.header {
     background-color: var(--background-dark);
     padding: 1rem 0;
-    color: var(--text-color-light);
-    display: flex; 
-    justify-content: space-around; 
+    color: var(--text-light);
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-.logo h1 {
-    color: var(--primary-color);
-    font-size: 1.8rem;
-    margin-bottom: 0;
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.logo span {
+.header__logo-title {
+    color: var(--primary-color);
+    font-size: var(--font-size-xl);
+    margin-bottom: 0;
+    font-family: var(--font-heading);
+}
+
+.header__logo-subtitle {
     display: block;
     font-size: 0.9rem;
     color: #bdc3c7;
 }
 
-.main-nav ul {
+.nav__list {
     list-style: none;
-    display: flex; 
-    gap: 1.5rem; /* Espaçamento entre os links */
+    display: flex;
+    gap: 1.5rem;
 }
-
-.main-nav a {
-    color: var(--text-color-light);
+ 
+.nav__link {
+    color: var(--text-light);
     font-weight: 500;
     padding: 0.5rem 0;
     border-bottom: 2px solid transparent;
+    text-decoration: none;
+    transition: color 0.3s, border-color 0.3s;
 }
 
-.main-nav a:hover {
+.nav__link:hover {
     color: var(--primary-color);
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom-color: var(--primary-color);
 }
 
-/*
-====================================
-3. Seções Comuns
-====================================
-*/
-section {
-    padding: 5rem 0;
-}
-
-/* Estilos para a seção Home (Banner) */
-.hero-section {
-    background: var(--background-dark);
-    color: var(--text-color-light);
-    text-align: center;
-    padding: 10vh 0;
-}
-
-.hero-section h2 {
-    font-size: 3rem; /* Título grande */
-    color: var(--text-color-light);
-    max-width: 80%;
-    margin: 0 auto 1rem;
-}
-
-.hero-section p {
-    font-size: var(--font-size-large);
-    max-width: 700px;
-    margin: 0 auto 2rem;
-}
-
-/* Estilos para as seções Sobre e Contato */
-.about-section, .contact-section {
-    background-color: var(--background-light);
-}
-
-/* Estilo para lista de Depoimentos */
-.testimonials-section {
-    background-color: #ecf0f1;
-    text-align: center;
-}
-
-.testimonial-card {
-    background-color: var(--text-color-light);
-    padding: 2rem;
-    border-radius: 10px;
-    margin: 2rem auto;
-    max-width: 700px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-blockquote {
-    font-style: italic;
-    font-size: var(--font-size-large);
-    margin-bottom: 1rem;
-    color: var(--text-color-dark);
-}
-
-.client-name {
-    font-weight: bold;
-    color: var(--primary-color);
-}
-
-/*
-====================================
-4. Serviços
-====================================
-*/
-.services-section {
-    text-align: center;
-}
-
-.services-list {
-    list-style: none;
-    padding: 0;
-    margin-top: 3rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    gap: 2rem;
-}
-
-.services-list li {
-    background-color: var(--text-color-light);
-    padding: 2rem;
-    border-radius: 8px;
-    text-align: left;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    border-top: 4px solid var(--primary-color);
-    transition: transform 0.3s;
-}
-
-.services-list li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-}
-
-.services-list h4 {
-    color: var(--secondary-color);
-    margin-bottom: 0.5rem;
-}
-
-/*
-====================================
-5. Contato
-====================================
-*/
-.contact-section .container {
-    /* **Flexbox para alinhar informações de contato e formulário** */
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4rem;
-    justify-content: space-between;
-}
-
-.contact-info, .contact-form {
-    flex: 1;
-    min-width: 300px;
-}
-
-.contact-info p {
-    margin-bottom: 0.8rem;
-}
-
-.contact-form label {
-    display: block;
-    margin-top: 1rem;
-    font-weight: bold;
-    color: var(--secondary-color);
-}
-
-.contact-form input:is([type="text"], [type="email"]),
-.contact-form textarea  {
-    width: 100%;
-    padding: 0.7rem;
-    margin-top: 0.3rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: var(--font-size-base);
-}
-
-.contact-form textarea {
-    resize: vertical;
-}
-
-.contact-form button {
-    width: 100%;
-    border: none;
-    cursor: pointer;
-    margin-top: 1.5rem;
-}
-
-/*
-====================================
-6. Rodapé
-====================================
-*/
-.main-footer {
+.footer {
     background-color: var(--background-dark);
     color: #bdc3c7;
     text-align: center;
@@ -292,79 +185,167 @@ blockquote {
     font-size: 0.9rem;
 }
 
-/*
-====================================
-7. Responsividade
-====================================
-*/
-.menu-toggle {
-    display: none;
+/* ===================================
+   4. SEÇÕES ESPECÍFICAS
+   =================================== */
+section {
+    padding: 5rem 0;
 }
 
-/* Estilos para telas menores que 768px (Móvel) */
+.section__heading {
+    font-family: var(--font-heading);
+    margin-bottom: 0.8em;
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+.hero {
+    background: var(--background-dark);
+    color: var(--text-light);
+    text-align: center;
+    padding: 10vh 0;
+}
+
+.hero__title {
+    font-size: var(--font-size-xxl);
+    color: var(--text-light);
+    max-width: 80%;
+    margin: 0 auto 1rem;
+    font-family: var(--font-heading);
+}
+
+.hero__text {
+    font-size: var(--font-size-large);
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+.testimonials {
+    background-color: #ecf0f1;
+}
+
+.testimonial__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 700px;
+    margin: 2rem auto 0;
+}
+
+.testimonial__quote {
+    font-style: italic;
+    font-size: var(--font-size-large);
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.testimonial__author {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.services__grid {
+    list-style: none;
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.services__item {
+    text-align: left;
+    border-top: 4px solid var(--primary-color);
+}
+
+.services__item-title {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-heading);
+}
+
+.contact .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    justify-content: space-between;
+}
+
+.contact__info, .contact__form {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact__info-item {
+    margin-bottom: 0.8rem;
+}
+
+.contact__form .btn {
+    width: 100%;
+}
+
+/* ===================================
+   5. RESPONSIVIDADE
+   =================================== */
+.header__menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: var(--text-light);
+    background: none;
+    border: none;
+}
+
 @media (max-width: 768px) {
     :root {
         --font-size-base: 0.95rem;
         --font-size-large: 1.1rem;
+        --font-size-xxl: 2rem;
     }
 
-    .main-header {
-        justify-content: flex-start;
-        padding: 1rem 5vw;
-    }
-    
-    .hero-section {
+    .hero {
         padding: 8vh 0;
     }
 
-    .hero-section h2 {
-        font-size: 2rem;
-    }
-
-    /* === Menu Hambúrguer === */
-    .main-nav {
-        display: none; 
+    .header__nav {
+        display: none;
         width: 100%;
         position: absolute;
-        top: 60px;
+        top: 100%;
         left: 0;
         background-color: var(--background-dark);
         text-align: center;
     }
 
-    .main-nav.active {
+    .header__nav--active {
         display: block;
     }
 
-    .main-nav ul {
+    .nav__list {
         flex-direction: column;
         padding: 1rem 0;
         gap: 0;
     }
 
-    .main-nav li a {
+    .nav__item .nav__link {
         display: block;
         padding: 1rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .menu-toggle {
-        display: block;
-        position: absolute;
-        right: 5vw;
-        top: 1.5rem;
-        cursor: pointer;
-        font-size: 1.8rem;
-        color: var(--text-color-light);
+    .nav__link:hover {
+        border-bottom-color: transparent;
     }
-    /* ======================= */
 
-      .contact-section .container {
+    .header__menu-toggle {
+        display: block;
+    }
+
+    .contact .container {
         flex-direction: column;
         gap: 2rem;
     }
 
-    .contact-info, .contact-form {
+    .contact__info, .contact__form {
         min-width: 100%;
     }
 }
