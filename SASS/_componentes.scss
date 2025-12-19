@@ -1,0 +1,50 @@
+@use 'variaveis' as v;
+@use 'mixins' as m;
+
+// Componente: Botão com BEM
+.btn {
+    @include m.btn-reset;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-size: v.$font-size-large;
+    font-weight: bold;
+    // Operador para calcular margem proporcional
+    margin-top: v.$spacing-unit; 
+
+    &--accent {
+        background-color: v.$accent-color;
+        color: v.$text-light;
+
+        &:hover {
+            background-color: v.$accent-hover-color;
+            transform: translateY(-2px);
+        }
+    }
+}
+
+// Componente: Card
+.card {
+    background-color: v.$text-light;
+    padding: v.$spacing-unit * 1.5; // Operador de multiplicação
+    border-radius: 8px;
+    box-shadow: 0 2px 4px v.$shadow-color;
+    transition: 0.3s;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px v.$shadow-color;
+    }
+}
+
+// Seções (Organizadas como blocos BEM)
+.hero {
+    background: v.$background-dark;
+    color: v.$text-light;
+    text-align: center;
+    padding: 10vh 0;
+
+    &__title {
+        font-size: v.$font-size-xxl;
+        margin-bottom: v.$spacing-unit / 2; // Operador de divisão
+    }
+}

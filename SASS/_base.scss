@@ -1,0 +1,25 @@
+@use 'variaveis' as v;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: v.$font-primary;
+    line-height: 1.6;
+    color: v.$text-dark;
+    background-color: v.$background-light;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
