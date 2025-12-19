@@ -1,0 +1,26 @@
+@use 'variaveis' as v;
+
+// Mixin 1: Flexbox Centralizado
+@mixin flex-center($direction: row, $justify: space-between) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: center;
+}
+
+// Mixin 2: Botão
+@mixin btn-reset {
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+// Mixin 3: Media Query Simples
+@mixin tablet {
+    @media (max-width: 768px) {
+        @content;
+    }
+}

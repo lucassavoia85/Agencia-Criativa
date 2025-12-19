@@ -1,0 +1,61 @@
+@use 'variaveis' as v;
+@use 'mixins' as m;
+
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.header {
+    background-color: v.$background-dark;
+    padding: 1rem 0;
+    color: v.$text-light;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    &__container {
+        @include m.flex-center;
+    }
+
+    &__logo-title {
+        color: v.$primary-color;
+        font-size: v.$font-size-xl;
+        font-family: v.$font-heading;
+    }
+
+    &__logo-subtitle {
+        display: block;
+        font-size: 0.9rem;
+        color: #bdc3c7;
+    }
+}
+
+.nav {
+    &__list {
+        list-style: none;
+        @include m.flex-center($justify: flex-end);
+        gap: 1.5rem;
+    }
+
+    &__link {
+        color: v.$text-light;
+        font-weight: 500;
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+        transition: 0.3s;
+
+        &:hover {
+            color: v.$primary-color;
+            border-bottom-color: v.$primary-color;
+        }
+    }
+}
+
+.footer {
+    background-color: v.$background-dark;
+    color: #bdc3c7;
+    text-align: center;
+    padding: v.$spacing-unit 0;
+}
